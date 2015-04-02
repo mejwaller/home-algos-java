@@ -51,14 +51,14 @@ class googleplay {
 	 }
 	 
 	 //convert number n from decimal to base b (upto 20)
-	 static public String fromDecimal(int n, int b)
+	 static public String fromDecimal(long n, int b)
 	 {
 		 String chars="0123456789ABCDEFGHIJ";
 		 String res="";
 		 
 		 while(n>0)
 		 {
-			 res = chars.charAt(n%b) + res;
+			 res = chars.charAt((int)n%b) + res;
 			 n/=b;
 		 }
 		 

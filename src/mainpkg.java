@@ -3,8 +3,29 @@ class mainpkg
 	public static void main(String[] args) 
 	{
 		
-		System.out.println(googleplay.gcd(1314,2336));
-		System.out.println(googleplay.gcd(25, 12));
+	    for(int i=0; i<= 32; i++) {
+	        
+	        //int res = leetcode.hammingWeight(i);
+	        String binrep = googleplay.fromDecimal(i,2);
+	        
+	        int nbits = 0;
+	        for(int j = 0; j < binrep.length();j++) {
+	            if(binrep.charAt(j) == '1') {
+	                nbits++;
+	            }	            
+	        }
+	        
+	        //if(nbits!=res) {
+	            System.out.println(leetcode.hammingWeight(i) + "  " + nbits + " " + googleplay.fromDecimal(i,2));
+	        //}
+	    }
+	    
+	    
+	    
+		//System.out.println(googleplay.gcd(1314,2336));
+		//System.out.println(googleplay.gcd(25, 12));
+	    
+	    
 		
 		//System.out.println(googleplay.lcm(6,9));
 		
@@ -36,7 +57,7 @@ class mainpkg
 		
 		String strnum = "FFF";
 		
-		System.out.println(strnum + " in decimal is " + googleplay.baseToDecimal(strnum,base));
+		//System.out.println(strnum + " in decimal is " + googleplay.baseToDecimal(strnum,base));
 		
 		/*int[][] validGrid = {
 				{5,3,4,6,7,8,9,1,2},
@@ -85,7 +106,7 @@ class mainpkg
 		int[] val11 = googleplay.arrIncrementer(val1);
 		int[] val21 = googleplay.arrIncrementer(val2);
 		
-		for(int i = 0; i< val11.length;i++)
+		/*for(int i = 0; i< val11.length;i++)
 		{
 			System.out.println("val11[" + i + "] is " + val11[i]);
 		}
@@ -95,7 +116,7 @@ class mainpkg
 		for(int i = 0; i< val21.length;i++)
 		{
 			System.out.println("val21[" + i + "] is " + val21[i]);
-		}
+		}*/
 		
 		
 		
