@@ -1,0 +1,189 @@
+﻿
+
+Public boolean uniqueChar(String str) {
+	Set<Character> chars = new HashSet<Character>();
+
+	for(int i=0; i<str.length(); i++) {
+		Character ch = str.charAt(i); //use autoboxing rather than constructor
+		if(chars.contains(ch) return false;
+		chars.add(ch);
+	}
+
+	return true;
+}
+
+public boolean isPerm(String str1, String str2) {
+	if(str1.length() != str2.length()) return false;
+
+	if(str1.equals(str2)) return true;
+
+	//naive:
+
+	Map<Character, Integer> str1chars = new HashMap<Character, Integer>();
+	Map<Character, Integer> str2chars = new HashMap<Character, Integer>();
+	for(int I = 0; I <str1.length; i++) {
+		Character ch = str1.charAt(i);
+		if(str1chars.contains(ch)) {			
+			//Integer count = str1chars.get(ch);
+			//count++;
+			str1chars.put(ch, str1chars.get(ch)++);
+		}
+		ch = str2.charAt(i);
+		if(str2chars.contains(ch)) {			
+			//Integer count = str2chars.get(ch);
+			//count++;
+			str2chars.put(ch, str2chars.get(ch)++);
+		}
+	
+	}
+
+	if(str1chars.equals(str2chars)) {
+		return true;
+	}
+}
+
+public void spaceReplace(char[] str, int len) {
+
+	//record the indices at which ther are spaces
+	//ArrayList<Integer> spinds = new ArrayList<Integer>();
+
+	//increment this by 2 as we insert '%20'
+	int newlen = len;
+
+	for(int I = 0; i<newlen; i++) {
+		if(str[i] = ' ')  {
+			//spinds.add(i);
+			newlen+=2;
+			//shunt the remainder of the string along by 2
+			for(int j = newlen-1; j>i;j--) {
+				str[j] = str[j-2];
+			}
+			str[i]='%';
+			str[i+1]='2';
+			str[i+2]='0';
+			i+=2;
+		}
+           }
+
+}
+
+public String compressString(String in) {
+	//we are given assumption that string only contains upper or lower case a-z
+	//ignoring that assumption for now:
+
+	if(in.length() <=1 )
+	{
+		return in;
+	}
+
+	StringBuffer temp = new StringBuffer();
+
+	int curCount = 1;
+	char curChar = in.charAt(0);
+
+	//last char??
+	//abde – I =3, curChar = d
+	//append d,1
+	for(int I =1; I < in.length(); i++) {
+		if(in.charAt(i) == curChar) {
+			curCount++;
+		}
+		else {
+			temp.append(curChar);
+			temp.append(curCount);
+			curChar = in.charAt(i);
+			curCount = 1;
+		}
+	}
+
+	//end of string
+	temp.append(curChar);
+	temp.append(curCount);
+
+	String retval = temp.toString();
+	if(retval.length() >= in.length()){
+		return in;
+	}
+
+	return retval;
+}
+
+1: 0,0 → 0,2
+2: 0,1 → 1,2
+3: 0,2 → 2,2
+
+4: 1,0 → 0,1
+5: 1,1 → 1,1
+6: 1,2 → 2,1
+
+7: 2,0 → 0,0
+8: 2,1 → 1,0 
+9: 2,2 → 2,0
+
+1 2 3          7 4 1
+4 5 6    ->  8 5 2
+7 8 9          9 6 3
+
+void rotImage(int[][] img, int n) {
+
+	int layers = n/2;
+
+	//move down rows
+	for(int I = 0 ; i<nlayers; i++) {
+		//top left of layer I will be at row and column 0+i
+		//top right will be at row0+i and col n-1-i
+		//bottom right will be at row and column n-1-i
+		//bottom left will be at row n-1-i and column 0+i
+		//90 deg rotation (clockwise) we move topleft->topright->bottomright-> bottomleft
+		//so lets do corners first and go on from there
+
+		//store top right in tmp and set it to top left:
+		temp =  img[i][n-1-i]
+		img[i][n-1-1] = img[i][i];
+		//store temp in moved pos (top left)
+		img[i][i] = temp;
+		//store  bottom right in temp
+		temp = img[n-1-i][n-1-i];
+		img[n-1-i][n-1-i] = img[i][i];		
+		//put bottom left in top left
+		img[i][i] = img[n-1-i][i];
+		//set botom left from temp
+		img[n-1-i][i] = temp;
+
+		
+
+
+
+
+		//now, for layer I we have row start = I, and col start = I
+		//row end  n-1-i, col end = n-1-i
+		for(j=i; j< n-1-i; j++) {//move along cols initally			
+			//store target index in temp – 1st target will be row j and column n-1-i
+			temp = img[j][n-1-j];
+			img[j][n-1-j] = img[i][j];
+			//store next val in previous val
+			img[i][j] = img[n-1-i][n-1-j];
+			//set that to temp
+			img[n-1-i][n-1-j] = temp;
+			temp = img [n-1-j][j];
+			img[n-1-j][j] = img[i][j];
+			img[i][j] = temp;
+		}
+	}
+}
+			
+			
+
+			
+
+
+			
+				
+			
+			
+		
+		
+		
+		
+  
+
