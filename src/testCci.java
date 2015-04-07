@@ -188,10 +188,21 @@ public class testCci extends TestCase {
         //5 0 7 0
         //0 0 0 0
         //1 0 3 0
-        exp1[0][0] = 1; exp1[0][1] = 0; exp1[0][2]=3; exp1[0][3] = 4;
+        exp1[0][0] = 1; exp1[0][1] = 0; exp1[0][2]=3; exp1[0][3] = 0;
         exp1[1][0] = 5; exp1[1][1] = 0; exp1[1][2] = 7; exp1[1][3] = 0;
         exp1[2][0] = 0; exp1[2][1] = 0; exp1[2][2] = 0; exp1[2][3] = 0;
         exp1[3][0] = 1; exp1[3][1] = 0; exp1[3][2] = 3; exp1[3][3] = 0;
+        
+        Cci.zeroRCs(test1, 4, 4);
+        
+        //Cci.printMatrix(exp1,4);
+        //Cci.printMatrix(test1,4);
+        
+        for(int i=0; i< 4; i++) {
+        	for(int j=0;j<4; j++) {
+        		assertEquals(exp1[i][j],test1[i][j]);
+        	}
+        }
         
     }
 }

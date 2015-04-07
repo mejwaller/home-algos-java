@@ -162,29 +162,31 @@ void rotImage(int[][] img, int n) {
 //assume int matrix
 void zeroRCs(int[][] m, int rows, int cols) {
     
-    class rc {
-        public rc(int r, int c) {row = r; col = c;}
-        int row;
-        int col; 
-    }
+    Set<Integer> orows = new HashSet<Integer>();
+    Set<Integer> ocols = new HashSet<Integer>();
     
-    ArrayList<rc> tozero = new ArrayList<rc>();
-    
-    for(int i=0 i< rows; i++) {
+     for(int i=0; i< rows; i++) {
         for(int j =0; j<cols;j++) {
             if(m[i][j]==0) {
-                tozero.add(new rc(i,j);
+                orows.add(i);
+		    ocols.add(j);
             }
         }
     }
     
-    for(rc things : tozero) {
-        for(i = 0; i < cols; i++) {
-            m[things.row][i]=0;
+    for(Integer row: orows) {
+        for(int i = 0; i < cols; i++) {
+            m[row][i]=0;
         }
-        for(i=0; i< rows; i++) {
-            m[i][things.col]=0; 
-        }
+    }
+
+
+
+
+    for(Integer col: ocols) {
+        for(int i=0; i < rows; i++) {
+            m[i][col]=0; 
+        }	          
     }
   }
 			

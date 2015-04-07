@@ -160,6 +160,34 @@ class Cci {
 			line.delete(0,line.length()-1);
 		}
 	}
+	
+	//assume int matrix
+	static public void zeroRCs(int[][] m, int rows, int cols) {
+	    
+	    Set<Integer> orows = new HashSet<Integer>();
+	    Set<Integer> ocols = new HashSet<Integer>();
+	    
+	     for(int i=0; i< rows; i++) {
+	        for(int j =0; j<cols;j++) {
+	            if(m[i][j]==0) {
+	                orows.add(i);
+			        ocols.add(j);
+	            }
+	        }
+	    }
+	    
+	    for(Integer row: orows) {
+	        for(int i = 0; i < cols; i++) {
+	            m[row][i]=0;
+	        }
+	    }
+
+	    for(Integer col: ocols) {
+	        for(int i=0; i < rows; i++) {
+	            m[i][col]=0; 
+	        }	          
+	    }
+	  }
 				
 				
 				
