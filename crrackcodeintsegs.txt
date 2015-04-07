@@ -121,55 +121,42 @@ public String compressString(String in) {
 9: 2,2 → 2,0
 
 1 2 3          7 4 1
-4 5 6    ->  8 5 2
+4 5 6    ->    8 5 2
 7 8 9          9 6 3
+
+1  2  3  4      13  9 5 1
+5  6  7  8  ->  14 10 6 2
+9  10 11 12     15 11 7 3 
+13 14 15 16     16 12 8 4
 
 void rotImage(int[][] img, int n) {
 
 	int layers = n/2;
-
-	//move down rows
-	for(int I = 0 ; i<nlayers; i++) {
-		//top left of layer I will be at row and column 0+i
-		//top right will be at row0+i and col n-1-i
-		//bottom right will be at row and column n-1-i
-		//bottom left will be at row n-1-i and column 0+i
-		//90 deg rotation (clockwise) we move topleft->topright->bottomright-> bottomleft
-		//so lets do corners first and go on from there
-
-		//store top right in tmp and set it to top left:
-		temp =  img[i][n-1-i]
-		img[i][n-1-1] = img[i][i];
-		//store temp in moved pos (top left)
-		img[i][i] = temp;
-		//store  bottom right in temp
-		temp = img[n-1-i][n-1-i];
-		img[n-1-i][n-1-i] = img[i][i];		
-		//put bottom left in top left
-		img[i][i] = img[n-1-i][i];
-		//set botom left from temp
-		img[n-1-i][i] = temp;
-
-		
-
-
-
-
-		//now, for layer I we have row start = I, and col start = I
-		//row end  n-1-i, col end = n-1-i
-		for(j=i; j< n-1-i; j++) {//move along cols initally			
-			//store target index in temp – 1st target will be row j and column n-1-i
-			temp = img[j][n-1-j];
-			img[j][n-1-j] = img[i][j];
-			//store next val in previous val
-			img[i][j] = img[n-1-i][n-1-j];
-			//set that to temp
-			img[n-1-i][n-1-j] = temp;
-			temp = img [n-1-j][j];
-			img[n-1-j][j] = img[i][j];
-			img[i][j] = temp;
-		}
-	}
+	int temp;
+	
+	for(int layer = 0; layer < layers; layer++) {  
+	   int first = layer;//starting index of layer
+	   int last = n-1-layer;//end index of layer
+	   
+	   for(int i = first; i < last; i++) {//for each layer index
+	       int offset = i -first;
+	       
+	       //store top row in temp
+	       temp = img[first][i];
+	       
+	       //set top row to left column
+	       img[first][i] = img[last-offset][first];
+	       
+	       //set left column to bottom row
+	       img[last-offset][first] = img[last][last-offset];
+	       
+	       //set bottom row to right column
+	       img[last][last-offset]=img[i][last];
+	       
+	       //set right column to top row (stored in temp)
+	       img[i][last] = temp;
+	    }
+	 }	
 }
 			
 			

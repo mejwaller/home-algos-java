@@ -147,17 +147,26 @@ public class testCci extends TestCase {
     	
     	Cci.rotMatrix(test1,3);
     	
-    	Cci.printMatrix(exp1,3);
-    	Cci.printMatrix(test1,3);
+    	//Cci.printMatrix(exp1,3);
+    	//Cci.printMatrix(test1,3);
     	
-    	assertEquals(exp1,test1);
+    	for(int i = 0; i< 3; i++) {
+    	    for(int j = 0; j<3; j++) {
+    	        assertEquals(exp1[i][j],test1[i][j]);
+    	    }
+    	}
+    	
     	
     	Cci.rotMatrix(test2,4);
     	
-    	Cci.printMatrix(exp2,4);
-    	Cci.printMatrix(test2,4);    	
+    	//Cci.printMatrix(exp2,4);
+    	//Cci.printMatrix(test2,4);    	
     	
-    	assertEquals(exp2,test2); 	
+    	for(int i = 0; i< 4; i++) {
+            for(int j = 0; j<4; j++) {
+                assertEquals(exp2[i][j],test2[i][j]);
+            }
+        }
     	
     	
     	
