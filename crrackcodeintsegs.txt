@@ -158,6 +158,35 @@ void rotImage(int[][] img, int n) {
 	    }
 	 }	
 }
+
+//assume int matrix
+void zeroRCs(int[][] m, int rows, int cols) {
+    
+    class rc {
+        public rc(int r, int c) {row = r; col = c;}
+        int row;
+        int col; 
+    }
+    
+    ArrayList<rc> tozero = new ArrayList<rc>();
+    
+    for(int i=0 i< rows; i++) {
+        for(int j =0; j<cols;j++) {
+            if(m[i][j]==0) {
+                tozero.add(new rc(i,j);
+            }
+        }
+    }
+    
+    for(rc things : tozero) {
+        for(i = 0; i < cols; i++) {
+            m[things.row][i]=0;
+        }
+        for(i=0; i< rows; i++) {
+            m[i][things.col]=0; 
+        }
+    }
+  }
 			
 			
 

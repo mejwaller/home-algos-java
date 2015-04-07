@@ -166,12 +166,32 @@ public class testCci extends TestCase {
             for(int j = 0; j<4; j++) {
                 assertEquals(exp2[i][j],test2[i][j]);
             }
-        }
-    	
-    	
-    	
-    	
-    	
-    }
+        }    	
+    }    
     
+    public final void testzerorcs() {
+        int[][] test1 = new int[4][4];
+        int[][] exp1 = new int[4][4];
+                
+        //test1:
+        //1 2 3 4
+        //5 6 7 8
+        //9 0 8 0
+        //1 2 3 4
+        test1[0][0]=1; test1[0][1]=2; test1[0][2] = 3; test1[0][3] = 4;
+        test1[1][0] = 5; test1[1][1]=6; test1[1][2]=7; test1[1][3] = 8;
+        test1[2][0] = 9; test1[2][1] = 0; test1[2][2]=8; test1[2][3]=0;
+        test1[3][0] = 1; test1[3][1] = 2; test1[3][2]=3; test1[3][3]=4;
+        
+        //exp1:
+        //1 0 3 0
+        //5 0 7 0
+        //0 0 0 0
+        //1 0 3 0
+        exp1[0][0] = 1; exp1[0][1] = 0; exp1[0][2]=3; exp1[0][3] = 4;
+        exp1[1][0] = 5; exp1[1][1] = 0; exp1[1][2] = 7; exp1[1][3] = 0;
+        exp1[2][0] = 0; exp1[2][1] = 0; exp1[2][2] = 0; exp1[2][3] = 0;
+        exp1[3][0] = 1; exp1[3][1] = 0; exp1[3][2] = 3; exp1[3][3] = 0;
+        
+    }
 }
