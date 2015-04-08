@@ -188,6 +188,45 @@ class Cci {
 	        }	          
 	    }
 	  }
+	
+	
+	//true if s2 is a substring of s1
+	static public boolean isSubstring(String s1, String s2) {
+	  	    
+	    if(s1.contains(new StringBuffer(s2))) {
+	        return true;
+	    }
+	    
+	    return false;
+	    
+	}
+	
+	static public boolean isRotation(String s1, String s2) {
+	    //S1 = "waterbottle"
+	    //S2 = "erbottlewat"
+	    //should return true 
+	    
+	    //S1 = "waterbottle"
+	    //S2 = "erbottlewat"
+	    //should return true 
+	    
+	    //use just *one* call to isSubstring
+
+	    //trivial case - s1 == s2:
+	    if(s1.equals(s2)) {
+	        return true;
+	    }
+	    
+	    //s2 will *always be a substring of s1 + s1 if s2 is a true rotation of s1...
+	    //waterbottlewaterbottle contains string erbottlewat...
+	    int len = s1.length();    
+	    if(s2.length() == len && len > 0) {
+	        String s1twice = s1+s1;
+	        return isSubstring(s1twice,s2);
+	    }
+	    
+	    return false;
+	} 
 				
 				
 				

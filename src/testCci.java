@@ -205,4 +205,24 @@ public class testCci extends TestCase {
         }
         
     }
+    
+    public final void testisSubstring() {
+        String s1 = "waterbottle";
+        String s2 = "bottle";
+        String s3 = "botel";
+        
+        assertTrue(Cci.isSubstring(s1,s2));
+        assertFalse(Cci.isSubstring(s1,s3));
+        assertTrue(Cci.isSubstring(s1,s1));
+    }
+    
+    public final void testisRotation() {
+        String s1 = "waterbottle";
+        String s2 = "erbottlewat";
+        String s3 = "erbottlew";
+        
+        assertTrue(Cci.isRotation(s1,s2));
+        assertTrue(Cci.isRotation(s1,s1));
+        assertFalse(Cci.isRotation(s1,s3));
+    }
 }
