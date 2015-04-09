@@ -1,4 +1,4 @@
-//singly-linked lsit
+//singly-linked list
 
 //7 ops on collections:
 //1. search
@@ -63,6 +63,65 @@ class SlinkedList {
             if(curnode.next.data == n) {
                 curnode.next = curnode.next.next;
                 return curnode.next;
+            }
+            curnode = curnode.next;
+        }
+        
+        return null;
+        
+    }
+    
+   //return node with max value
+    public SNode max() {
+        if(head==null) return null;
+        
+        SNode curmax = head;
+        SNode curnode = head;
+        while(curnode.next!=null) {
+            if(curmax.data < curnode.next.data) {
+                curmax = curnode.next;
+            }
+            curnode = curnode.next;
+        }
+        
+        return curmax;
+    }
+    
+   //return node with max value
+    public SNode min() {
+        if(head==null) return null;
+        
+        SNode curmin = head;
+        SNode curnode = head;
+        while(curnode.next!=null) {
+            if(curmin.data > curnode.next.data) {
+                curmin = curnode.next;
+            }
+            curnode = curnode.next;
+        }
+        
+        return curmin;
+    }
+    
+    public SNode getNext(int n) {
+        SNode cur = find(n);
+        
+        if(cur==null) return null;
+        
+        return cur.next;        
+        
+    }
+    
+    public SNode getPrev(int n) {
+        if(head==null) {
+            return null;
+        }
+        
+        SNode curnode = head;
+        
+        while(curnode.next!=null) {
+            if(curnode.next.data == n) {
+                return curnode;
             }
             curnode = curnode.next;
         }
