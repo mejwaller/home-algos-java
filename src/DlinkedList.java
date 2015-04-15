@@ -134,6 +134,33 @@ class DlinkedList {
     	return retnode;
     	
     }
+    
+    /*public SNode getNext(int n) {
+        SNode cur = find(n);
+        
+        if(cur==null) return null;
+        
+        return cur.next;        
+        
+    }
+    
+    public SNode getPrev(int n) {
+        if(head==null) {
+            return null;
+        }
+        
+        SNode curnode = head;
+        
+        while(curnode.next!=null) {
+            if(curnode.next.data == n) {
+                return curnode;
+            }
+            curnode = curnode.next;
+        }
+        
+        return null;
+        
+    }*/
 }
 
 class DNode {
