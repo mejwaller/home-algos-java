@@ -89,8 +89,10 @@ public class testSlinkedList extends TestCase {
         SNode exp3 = new SNode(3);
         SNode exp4 = new SNode(5);
         SNode exp5 = new SNode(6);
+        
+        System.out.println("After data:" + afterdelete.data + "Deleted data:" + toDelete.data);
                 
-        assertEquals(exp4,afterdelete);
+        assertEquals(afterdelete,toDelete);
         
         assertEquals(exp1,list.head);
         assertEquals(exp2,list.head.next);

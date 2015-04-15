@@ -49,7 +49,7 @@ class SlinkedList {
         curnode.next = node;
     }
     
-    //return node after deleted node
+    //return deleted node
     public SNode delete(int n) {
         if(head==null) return null;
         
@@ -59,15 +59,17 @@ class SlinkedList {
         }
         
         SNode curnode = head;
+        SNode retval = null;
         while(curnode.next!=null) {
             if(curnode.next.data == n) {
+                retval = curnode.next;
                 curnode.next = curnode.next.next;
-                return curnode.next;
+                return retval;
             }
             curnode = curnode.next;
         }
         
-        return null;
+        return retval;
         
     }
     
