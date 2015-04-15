@@ -225,4 +225,41 @@ public class testCci extends TestCase {
         assertTrue(Cci.isRotation(s1,s1));
         assertFalse(Cci.isRotation(s1,s3));
     }
+    
+    public final void testllDupRemove() {
+        SlinkedList ll = new SlinkedList();
+        
+        SNode one = new SNode(1);
+        SNode two = new SNode(2);
+        SNode twoo = new SNode(2);
+        SNode three = new SNode(3);
+        SNode four = new SNode(4);
+        SNode foour = new SNode(4);
+        SNode fooour = new SNode(4);
+        SNode twooo = new SNode(2);
+        
+        ll.insert(twooo);
+        ll.insert(fooour);
+        ll.insert(foour);
+        ll.insert(four);
+        ll.insert(three);
+        ll.insert(twoo);
+        ll.insert(two);
+        ll.insert(one);
+        
+        Cci.llRemoveDupes(ll);
+        
+        SNode curnode = ll.head;
+        
+        System.out.println("Node one data:" + curnode.data);
+        assertEquals(curnode,one);
+        System.out.println("Node two data:" + curnode.next.data);
+        assertEquals(curnode.next,two);
+        System.out.println("Node three data:" + curnode.next.next.data);
+        assertEquals(curnode.next.next,three);
+        System.out.println("Node four data:" + curnode.next.next.next.data);
+        assertEquals(curnode.next.next.next,four);
+        assertEquals(curnode.next.next.next.next,null);
+        
+    }
 }

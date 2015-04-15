@@ -227,6 +227,31 @@ class Cci {
 	    
 	    return false;
 	} 
+	
+	static public void llRemoveDupes(SlinkedList ll) {
+	    
+	    Set<Integer> nodes = new HashSet<Integer>();
+	    
+	    SNode curnode = ll.head;
+	    
+	    if(ll.head==null) return;//empty list
+	    
+	    nodes.add(ll.head.data);
+	    
+	    while(curnode.next!=null) {
+	        if(nodes.contains(curnode.next.data)) {
+	            ll.delete(curnode.next.data);
+	        }
+	        else {
+	            nodes.add(curnode.next.data);	            
+	        }
+	        curnode = curnode.next;
+	        
+	    }
+	                    
+	    
+	    
+	}
 				
 				
 				
