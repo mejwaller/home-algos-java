@@ -251,15 +251,151 @@ public class testCci extends TestCase {
         
         SNode curnode = ll.head;
         
-        System.out.println("Node one data:" + curnode.data);
+        //System.out.println("Node one data:" + curnode.data);
         assertEquals(curnode,one);
-        System.out.println("Node two data:" + curnode.next.data);
-        assertEquals(curnode.next,two);
-        System.out.println("Node three data:" + curnode.next.next.data);
-        assertEquals(curnode.next.next,three);
-        System.out.println("Node four data:" + curnode.next.next.next.data);
-        assertEquals(curnode.next.next.next,four);
+        //System.out.println("Node two data:" + curnode.next.data);
+        assertEquals(curnode.next,three);//NOT two as first 2 twos will get deleted (1st found are deleted)
+       //System.out.println("Node three data:" + curnode.next.next.data);
+        assertEquals(curnode.next.next,four);
+        //System.out.println("Node four data:" + curnode.next.next.next.data);
+        assertEquals(curnode.next.next.next,two);
         assertEquals(curnode.next.next.next.next,null);
         
+    }
+    
+    public final void testkthtolast() {
+        SlinkedList ll = new SlinkedList();
+        
+        
+        //7 nodes
+        for(int i=1;i<=7;i++) {
+            ll.append(new SNode(i));
+        }
+        
+        SNode actual = Cci.kthtolast(ll,3);
+        
+        //1-2-3-4-5-6-7 - 3rd to last is 5
+        SNode expected = new SNode(5);
+        
+        assertEquals(expected,actual);
+        
+        actual = Cci.kthtolast(ll,8);
+        assertNull(actual);
+        
+        expected = new SNode(1);
+        actual = Cci.kthtolast(ll,7);
+        //check my indexing and counting is correct...
+        assertEquals(expected,actual);
+    }
+    
+    public final void testPartition() {
+        
+        SlinkedList llin = new SlinkedList();
+        
+        SlinkedList expected = new SlinkedList();
+        
+        //set up a llist as:
+        //8-7-4-1-2-3-5
+        llin.insert(new SNode(5));
+        llin.insert(new SNode(3));
+        llin.insert(new SNode(2));
+        llin.insert(new SNode(1));
+        llin.insert(new SNode(4));
+        llin.insert(new SNode(7));
+        llin.insert(new SNode(8));
+        
+        //partitioning around 4 should result in 
+        //3-2-1-8-7-4-5 (that order - vals either side of partition are appended and inserted as we go)
+        expected.insert(new SNode(5));
+        expected.insert(new SNode(4));
+        expected.insert(new SNode(7));
+        expected.insert(new SNode(8));
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(2));
+        expected.insert(new SNode(3));
+        
+        SlinkedList actual = Cci.partition(llin,4);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) {
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
+    }
+    
+    public final void testAdd() {
+        SlinkedList left = new SlinkedList();
+        SlinkedList right = new SlinkedList();
+        SlinkedList expected = new SlinkedList();
+        
+        //left = 9969
+        //right 345
+        //expected=10314
+        left.insert(new SNode(9));
+        left.insert(new SNode(9));
+        left.insert(new SNode(6));
+        left.insert(new SNode(9));
+        
+        right.insert(new SNode(3));
+        right.insert(new SNode(4));
+        right.insert(new SNode(5));
+        
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(0));
+        expected.insert(new SNode(3));
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(4));
+        
+        SlinkedList actual = Cci.add(left,right);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) { 
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
+    }
+    
+    public final void testAddV2() {
+        SlinkedList left = new SlinkedList();
+        SlinkedList right = new SlinkedList();
+        SlinkedList expected = new SlinkedList();
+        
+        //left = 9969
+        //right 345
+        //expected=10314
+        left.append(new SNode(9));
+        left.append(new SNode(9));
+        left.append(new SNode(6));
+        left.append(new SNode(9));
+        
+        right.append(new SNode(3));
+        right.append(new SNode(4));
+        right.append(new SNode(5));
+        
+        expected.append(new SNode(1));
+        expected.append(new SNode(0));
+        expected.append(new SNode(3));
+        expected.append(new SNode(1));
+        expected.append(new SNode(4));
+        
+        SlinkedList actual = Cci.addV2(left,right);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) { 
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
     }
 }

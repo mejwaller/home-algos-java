@@ -238,8 +238,157 @@ public void llRemoveDupes(SlinkedList ll) {
             if(nodes.contains(curnode.next.data)) {
                 ll.delete(curnode.next.data);
             }
+            else {
+                nodes.add(curnode.next.data);
+            }
             curnode = curnode.next
  }
+ 
+public void deletNode(SNode node) {
+
+//first solution - generate a new linked list (question does not say in place) 
+public SlinkedList partition(SlinkedList ll, int val) {
+    SlinkedList retlist = new SlinkedList();
+    
+    SNode curnode = ll.head;
+    if(curnode==null) return null;
+    
+    while(curnode!=null) {
+        if(curnode.data < val) {
+            retlist.insert(curnode);
+        }
+        else {
+            retlist.append(curnode);
+    }
+    
+    return retlist;
+    
+ }
+ 
+ public SlinkedList addV2(SLinkedList left, SLinkedList right) {
+     int ileft, iright;
+     
+     //if both are null, return null, else if one is null just return the other
+    if(left.head==null) {
+        if(right.head!=null){
+            return right;
+        }
+        else return null;
+    }
+    else if(right.head==null) {
+        return left;
+    }
+    
+    //build left number
+    //123 stored as 1-2-3
+    int ileft = left.head.data;
+    
+    SNode curnode = head.next;
+    while(curnode!=null) {
+        ileft*=10;
+        ileft+=curnode.data;
+        curnode = curnode.next;
+    }
+    
+    //build right number
+    int iright = right.head.data;
+    curnode = right.head.next;
+    while(curnode!=null) {
+        iright*=10;
+        iright+=curnode.data;
+        curnode = curnode.next;
+    }
+    
+    int iresult=ileft+iright;
+    
+    //no build up linkedlist
+    SlinkedList retval = new SlinkedList();
+    
+    
+    
+    while(iresult/10 != 0 || iresult%10 !=0) {
+    {
+        retval.insert(iresult%10);
+        iresult=iresult/10;
+    }
+
+    return retval;
+
+}
+
+    
+ 
+ public SlinkedList add(SlinkedList left, SLinkedList right) {
+    
+    int ileft, iright;
+    
+    //build ileft
+    int mult = 10;
+    
+    //if both are null, return null, else if one is null just return the other
+    if(left.head==null) {
+        if(right.head!=null){
+            return right;
+        }
+        else return null;
+    }
+    else if(right.head==null) {
+        return left;
+    }
+    
+    //build left number
+    ileft = left.head.data;
+    
+    SNode curnode = left.head.next;
+    
+    while(curnode!=null) {
+        ileft += mult * curnode.data;
+        mult*=10;
+        curnode=curnode.next;
+    }
+    
+    //build right number
+    iright = right.head.data;
+   
+    curnode = right.head.next;
+    while(curnode!=null){
+       iright += mult * curnode.data;
+       mult*=10;
+       curnode=curnode.next;
+    }   
+    
+    int iresult=ileft+iright;
+    
+    //no build up linkedlist
+    SlinkedList retval = new SlinkedList();
+    
+    
+    
+    while(iresult/10 != 0 || iresult%10 !=0) {
+    {
+        retval.append(iresult%10);
+        iresult=iresult/10;
+    }
+    
+    return retval;
+}
+        
+          
+    
+    
+    
+    
+        
+        
+            
+        
+
+    
+
+        
+    
+ 
+ 
 			
 			
 

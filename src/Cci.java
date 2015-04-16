@@ -243,16 +243,174 @@ class Cci {
 	            ll.delete(curnode.next.data);
 	        }
 	        else {
-	            nodes.add(curnode.next.data);	            
+	            nodes.add(curnode.next.data);	    
 	        }
 	        curnode = curnode.next;
-	        
 	    }
-	                    
-	    
-	    
 	}
-				
-				
-				
+	
+	static public SNode kthtolast(SlinkedList ll, int k) {
+	    //simplest approach to me seems to be run along ll, count up the elements
+	    //(so we have size n) then run along counting until we reach kth to last
+	    //e.g.:
+	    
+	    //a->b->c->d->e->f
+	    //3rd to last is d
+	    //6 elements
+	    //count along from 1 until we reach  6-3+1th element (n-k+1)
+	    //test that n-k+1 is not <= 0!
+	       int size=0;
+	       
+	       SNode curnode = ll.head;
+	       
+	       if(curnode==null) {
+	           return null;
+	       }
+	       
+	       while(curnode.next!=null) {
+	           size++;
+	           curnode=curnode.next;
+	       }
+	       size++;//account for last node
+	       
+	       if(size-k+1 <= 0) return null;//k goes back beyond front of list!
+	       
+	       
+	       curnode=ll.head;
+	       int counter=1;
+	       while(counter < size-k+1) {
+	           curnode=curnode.next;
+	           counter++;
+	       }
+	       
+	       return curnode;
+	   }
+	
+	//first solution - generate a new linked list (question does not say in place) 
+	static public SlinkedList partition(SlinkedList ll, int val) {
+	    SlinkedList retlist = new SlinkedList();
+	    
+	    SNode curnode = ll.head;
+	    if(curnode==null) return null;
+	    
+	    while(curnode!=null) {
+	        //insert/append *copies* as 'next' pointer gets updated once put into new list 
+	        if(curnode.data < val) {
+	            retlist.insert(new SNode(curnode.data));
+	        }
+	        else {
+	            retlist.append(new SNode(curnode.data));
+	        }
+	        curnode = curnode.next;
+	    }
+	        
+	    return retlist;
+	 }
+	
+	static public SlinkedList add(SlinkedList left, SlinkedList right) {
+	    
+	    int ileft, iright;
+	    
+	    //build ileft
+	    int mult = 10;
+	    
+	    //if both are null, return null, else if one is null just return the other
+	    if(left.head==null) {
+	        if(right.head!=null){
+	            return right;
+	        }
+	        else return null;
+	    }
+	    else if(right.head==null) {
+	        return left;
+	    }
+	    
+	    //build left number
+	    ileft = left.head.data;
+	    
+	    SNode curnode = left.head.next;
+	    
+	    while(curnode!=null) {
+	        ileft += mult * curnode.data;
+	        mult*=10;
+	        curnode=curnode.next;
+	    }
+	    
+	    //build right number
+	    iright = right.head.data;
+	   
+	    curnode = right.head.next;
+	    mult=10;
+	    while(curnode!=null){
+	       iright += mult * curnode.data;
+	       mult*=10;
+	       curnode=curnode.next;
+	    }   
+	    
+	    int iresult=ileft+iright;
+	    
+	    //System.out.println("Adding: " + ileft + " + " + iright + " = " + iresult);
+	    
+	    //no build up linkedlist
+	    SlinkedList retval = new SlinkedList();
+	       
+	    while((iresult/10) != 0 || (iresult%10) !=0) {
+	        
+	        retval.append(new SNode(iresult%10));
+	        iresult=iresult/10;
+	        //System.out.println("iresult now: " + iresult + " so iresult/10 = " + iresult/10 + " and iresult%10 = " + iresult%10);
+	    }
+	    
+	    return retval;
+	}		
+	
+	static public SlinkedList addV2(SlinkedList left, SlinkedList right) {
+	     
+	     //if both are null, return null, else if one is null just return the other
+	    if(left.head==null) {
+	        if(right.head!=null){
+	            return right;
+	        }
+	        else return null;
+	    }
+	    else if(right.head==null) {
+	        return left;
+	    }
+	    
+	    //build left number
+	    //123 stored as 1-2-3
+	    int ileft = left.head.data;
+	    
+	    SNode curnode = left.head.next;
+	    while(curnode!=null) {
+	        //System.out.println("ileft is now: " + ileft + "(should be " + 9969 + ")");
+	        ileft*=10;
+	        ileft+=curnode.data;
+	        curnode = curnode.next;
+	    }
+	    
+	    //build right number
+	    int iright = right.head.data;
+	    
+	    curnode = right.head.next;
+	    while(curnode!=null) {
+	        //System.out.println("iright is now: " + iright + "(should be " + 345 + ")");
+	        iright*=10;
+	        iright+=curnode.data;
+	        curnode = curnode.next;
+	    }
+	    
+	    int iresult=ileft+iright;
+	    
+	    //no build up linkedlist
+	    SlinkedList retval = new SlinkedList();
+	        
+	    while(iresult/10 != 0 || iresult%10 !=0) {
+	        
+	        retval.insert(new SNode(iresult%10));
+	        iresult=iresult/10;
+	    }
+	    
+	    return retval;
+	}
 }
