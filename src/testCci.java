@@ -398,4 +398,36 @@ public class testCci extends TestCase {
             acurnode=acurnode.next;
         }
     }
+    
+    public final void testGetRepeat() {
+        
+        SlinkedList circ = new SlinkedList();
+        
+        SNode n1 = new SNode(1);
+        SNode n2 = new SNode(2);
+        SNode n3 = new SNode(3);
+        SNode n4 = new SNode(4);
+        SNode n5 = new SNode(5);
+        
+        circ.append(n1);
+        circ.append(n2);
+        circ.append(n3);
+        circ.append(n4);
+        circ.append(n5);
+        n5.next = n3;
+        
+        assertEquals(n3,Cci.getRepeated(circ));
+        
+        SlinkedList empty = new SlinkedList();
+        
+        assertNull(Cci.getRepeated(empty));
+        
+        SlinkedList ok = new SlinkedList();
+        
+        for(int i=1;i<5;i++) {
+            ok.append(new SNode(i));
+        }
+        
+        assertNull(Cci.getRepeated(ok));
+    }
 }

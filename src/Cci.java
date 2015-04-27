@@ -413,4 +413,26 @@ class Cci {
 	    
 	    return retval;
 	}
+	
+	static public SNode getRepeated(SlinkedList ll) {
+	    Set<SNode> seen = new HashSet<SNode>();
+	    
+	    if(ll.head==null) return null;
+	    
+	    SNode curnode = ll.head;
+	    
+	    while(curnode!=null) {
+	        //return curnode if it's already in the ll (same node as previous)
+	        if(seen.contains(curnode)) {
+	            return curnode;
+	        }
+	        else {//add curnode to the set to mark it as having been seen
+	            seen.add(curnode);
+	        }
+	        curnode = curnode.next;
+	    }
+	    
+	    //if we get here there is no circularity so return null
+	    return null;
+	}
 }
