@@ -430,4 +430,64 @@ public class testCci extends TestCase {
         
         assertNull(Cci.getRepeated(ok));
     }
+    
+    public final void testIsPalindrome() {
+        
+        //empty list
+        SlinkedList ll0 = new SlinkedList();
+        
+        assertFalse(Cci.isPalindrome(ll0));
+        
+        //1 element list
+        SlinkedList ll1 = new SlinkedList();
+        ll1.insert(new SNode(2));
+        
+        assertTrue(Cci.isPalindrome(ll1));
+        
+        //make an odd palindrome 1234321
+        SlinkedList ll2 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll2.append(new SNode(i));            
+        }
+        for(int i=3;i>=1;i--){
+            ll2.append(new SNode(i));
+        }
+        
+        assertTrue(Cci.isPalindrome(ll2));
+        
+        //make an odd non-palindrome
+        SlinkedList ll3 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll3.append(new SNode(i));            
+        }
+        for(int i=3;i>=2;i--){
+            ll3.append(new SNode(i));
+        }
+        ll3.append(new SNode(4));
+        
+        assertFalse(Cci.isPalindrome(ll3));
+        
+        //make an even palindrome
+        SlinkedList ll4 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll4.append(new SNode(i));            
+        }
+        for(int i=4;i>=1;i--){
+            ll4.append(new SNode(i));
+        }
+        
+        assertTrue(Cci.isPalindrome(ll4));
+        
+        //make an even non-palindrome
+        SlinkedList ll5 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll5.append(new SNode(i));            
+        }
+        for(int i=4;i>=2;i--){
+            ll5.append(new SNode(i));
+        }
+        ll5.append(new SNode(4));
+        
+        assertFalse(Cci.isPalindrome(ll5));        
+    }
 }

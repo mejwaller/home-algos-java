@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Stack;
 import java.lang.Character;
 
 class Cci {
@@ -435,4 +436,72 @@ class Cci {
 	    //if we get here there is no circularity so return null
 	    return null;
 	}
+	
+	public static boolean isPalindrome(SlinkedList ll) {
+
+	    if(ll.head==null) return false;
+	    
+	    if(ll.head.next==null) return true;//1 element ll
+	    
+	    //1-2-3-4-3-2-1 - palindrome -odd
+	    //1-2-3-4-3-2-4 - not palindrome
+	    //1-2-3-4-4-3-2-1 - even palindrome
+	    
+	    Stack<Integer> stack = new Stack<Integer>();
+	    
+	    SNode slow = ll.head;
+	    SNode fast = ll.head.next.next;
+	    
+	    stack.push(slow.data);
+	    
+	    while(fast!=null && fast.next!=null) {    
+	        slow = slow.next;
+	        fast=fast.next.next;
+	        stack.push(slow.data);
+	    }
+	    
+	    //for odd palindrome:
+	    //1-2-3-4-3-2-1
+	    //slow set to 1
+	    //fast set to 3
+	    //we first push 1 to stack
+	    //then slow set to 2
+	    //fast set to (next) 3
+	    //push 2 onto stack
+	    //the slow set to 3
+	    //fast set to (back) 1
+	    //push 3 onto stack
+	    //now fast.next ==null (but fast!=null)) 
+	    //so we don't get to push 4 onto stack - but do we care as it;s the middle value?
+	    
+	    //for even palindroms:
+	    //1-2-3-4-4-3-2-1
+	    //slow set to 1
+	    //fast set to 3
+	    //push 1 onto stack
+	    //slow set to 2
+	    //fast set to (2nd) 4
+	    //push 2 ont stack
+	    //slow set to 3
+	    //fast set to 2
+	    //push 3 onto stack
+	    //slow set to (1st) 4
+	    //fast set to null
+	    //push 4 onto stack
+	    
+	    if(fast!=null && fast.next==null) { //odd number 
+	        slow=slow.next.next;//skip middle one - i.e. move to to 2nd 3 in first case
+	    }
+	    else slow=slow.next;//otherwise it's even so move 
+	    
+	    while(slow!=null) {  
+	        Integer top = stack.pop();
+	        if(top.intValue() != slow.data) {
+	            return false;
+	        }
+	        slow=slow.next;
+	    }
+	    
+	    return true;
+	 }
 }
