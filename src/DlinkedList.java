@@ -126,6 +126,24 @@ class DlinkedList {
         
         return retval;              
     }
+    
+    public SNode getPrev(int n) {
+        if(head==null) {
+            return null;
+        }
+        
+        SNode curnode = head;
+        
+        while(curnode.next!=null) {
+            if(curnode.next.data == n) {
+                return curnode;
+            }
+            curnode = curnode.next;
+        }
+        
+        return null;
+        
+    }*/
 }
 
 class DNode {

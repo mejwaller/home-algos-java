@@ -92,7 +92,7 @@ public class testDlinkedList extends TestCase {
     
     }
     
-    public final void testMax() {
+    public final void testMin() {
         
         DNode n1 = new DNode(1);
         DNode n2 = new DNode(16);
@@ -101,12 +101,11 @@ public class testDlinkedList extends TestCase {
         DNode n5 = new DNode(4);
         
         DlinkedList list = new DlinkedList();
-        
-        list.insert(n1);
-        list.insert(n2);
-        list.insert(n3);
-        list.insert(n4);
         list.insert(n5);
+        list.insert(n4);
+        list.insert(n3);
+        list.insert(n2);
+        list.insert(n1);
         
         assertEquals(n3,list.max());
         
@@ -171,4 +170,6 @@ public class testDlinkedList extends TestCase {
         assertEquals(n4,n3.prev);
         
     }
+    
+    
 }
