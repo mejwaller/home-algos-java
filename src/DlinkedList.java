@@ -127,12 +127,12 @@ class DlinkedList {
         return retval;              
     }
     
-    public SNode getPrev(int n) {
+    public DNode getPrev(int n) {
         if(head==null) {
             return null;
         }
         
-        SNode curnode = head;
+        DNode curnode = head;
         
         while(curnode.next!=null) {
             if(curnode.next.data == n) {
@@ -142,8 +142,9 @@ class DlinkedList {
         }
         
         return null;
+    }
         
-    }*/
+   
 }
 
 class DNode {

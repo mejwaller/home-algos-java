@@ -92,7 +92,7 @@ public class testDlinkedList extends TestCase {
     
     }
     
-    public final void testMin() {
+    public final void testMax() {
         
         DNode n1 = new DNode(1);
         DNode n2 = new DNode(16);
