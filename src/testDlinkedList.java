@@ -102,7 +102,73 @@ public class testDlinkedList extends TestCase {
         
         DlinkedList list = new DlinkedList();
         
-        assertEquals(n4,list.max());
+        list.insert(n1);
+        list.insert(n2);
+        list.insert(n3);
+        list.insert(n4);
+        list.insert(n5);
+        
+        assertEquals(n3,list.max());
+        
+    }
+    
+    public final void testMin() {
+        
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(16);
+        DNode n3 = new DNode(256);
+        DNode n4 = new DNode(234);
+        DNode n5 = new DNode(4);
+        
+        DlinkedList list = new DlinkedList();
+        
+        list.insert(n1);
+        list.insert(n2);
+        list.insert(n3);
+        list.insert(n4);
+        list.insert(n5);
+        
+        assertEquals(n1,list.min());
+        
+    }
+    
+    public final void testNext() {
+        
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(16);
+        DNode n3 = new DNode(256);
+        DNode n4 = new DNode(234);
+        DNode n5 = new DNode(4);
+        
+        DlinkedList list = new DlinkedList();
+        
+        list.insert(n1);
+        list.insert(n2);
+        list.insert(n3);
+        list.insert(n4);
+        list.insert(n5);
+        
+        assertEquals(n2,n3.next);
+        
+    }
+    
+    public final void testPrev() {
+        
+        DNode n1 = new DNode(1);
+        DNode n2 = new DNode(16);
+        DNode n3 = new DNode(256);
+        DNode n4 = new DNode(234);
+        DNode n5 = new DNode(4);
+        
+        DlinkedList list = new DlinkedList();
+        
+        list.insert(n1);
+        list.insert(n2);
+        list.insert(n3);
+        list.insert(n4);
+        list.insert(n5);
+        
+        assertEquals(n4,n3.prev);
         
     }
 }

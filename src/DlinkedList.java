@@ -88,8 +88,43 @@ class DlinkedList {
             curnode = curnode.next;
         }
                 
-        return retval;
+        return retval;        
+    }
+    
+    public DNode max() {
         
+        if(head==null) return null;
+        
+        DNode retval = head;
+        
+        DNode curnode = head.next;
+        
+        while(curnode!=null) {
+            if(curnode.data > retval.data) {
+                retval=curnode;
+            }
+            curnode=curnode.next;
+        }
+        
+        return retval;              
+    }
+    
+    public DNode min() {
+        
+        if(head==null) return null;
+        
+        DNode retval = head;
+        
+        DNode curnode = head.next;
+        
+        while(curnode!=null) {
+            if(curnode.data < retval.data) {
+                retval=curnode;
+            }
+            curnode=curnode.next;
+        }
+        
+        return retval;              
     }
 }
 
