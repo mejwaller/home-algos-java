@@ -225,4 +225,269 @@ public class testCci extends TestCase {
         assertTrue(Cci.isRotation(s1,s1));
         assertFalse(Cci.isRotation(s1,s3));
     }
+    
+    public final void testllDupRemove() {
+        SlinkedList ll = new SlinkedList();
+        
+        SNode one = new SNode(1);
+        SNode two = new SNode(2);
+        SNode twoo = new SNode(2);
+        SNode three = new SNode(3);
+        SNode four = new SNode(4);
+        SNode foour = new SNode(4);
+        SNode fooour = new SNode(4);
+        SNode twooo = new SNode(2);
+        
+        ll.insert(twooo);
+        ll.insert(fooour);
+        ll.insert(foour);
+        ll.insert(four);
+        ll.insert(three);
+        ll.insert(twoo);
+        ll.insert(two);
+        ll.insert(one);
+        
+        Cci.llRemoveDupes(ll);
+        
+        SNode curnode = ll.head;
+        
+        //System.out.println("Node one data:" + curnode.data);
+        assertEquals(curnode,one);
+        //System.out.println("Node two data:" + curnode.next.data);
+        assertEquals(curnode.next,three);//NOT two as first 2 twos will get deleted (1st found are deleted)
+       //System.out.println("Node three data:" + curnode.next.next.data);
+        assertEquals(curnode.next.next,four);
+        //System.out.println("Node four data:" + curnode.next.next.next.data);
+        assertEquals(curnode.next.next.next,two);
+        assertEquals(curnode.next.next.next.next,null);
+        
+    }
+    
+    public final void testkthtolast() {
+        SlinkedList ll = new SlinkedList();
+        
+        
+        //7 nodes
+        for(int i=1;i<=7;i++) {
+            ll.append(new SNode(i));
+        }
+        
+        SNode actual = Cci.kthtolast(ll,3);
+        
+        //1-2-3-4-5-6-7 - 3rd to last is 5
+        SNode expected = new SNode(5);
+        
+        assertEquals(expected,actual);
+        
+        actual = Cci.kthtolast(ll,8);
+        assertNull(actual);
+        
+        expected = new SNode(1);
+        actual = Cci.kthtolast(ll,7);
+        //check my indexing and counting is correct...
+        assertEquals(expected,actual);
+    }
+    
+    public final void testPartition() {
+        
+        SlinkedList llin = new SlinkedList();
+        
+        SlinkedList expected = new SlinkedList();
+        
+        //set up a llist as:
+        //8-7-4-1-2-3-5
+        llin.insert(new SNode(5));
+        llin.insert(new SNode(3));
+        llin.insert(new SNode(2));
+        llin.insert(new SNode(1));
+        llin.insert(new SNode(4));
+        llin.insert(new SNode(7));
+        llin.insert(new SNode(8));
+        
+        //partitioning around 4 should result in 
+        //3-2-1-8-7-4-5 (that order - vals either side of partition are appended and inserted as we go)
+        expected.insert(new SNode(5));
+        expected.insert(new SNode(4));
+        expected.insert(new SNode(7));
+        expected.insert(new SNode(8));
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(2));
+        expected.insert(new SNode(3));
+        
+        SlinkedList actual = Cci.partition(llin,4);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) {
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
+    }
+    
+    public final void testAdd() {
+        SlinkedList left = new SlinkedList();
+        SlinkedList right = new SlinkedList();
+        SlinkedList expected = new SlinkedList();
+        
+        //left = 9969
+        //right 345
+        //expected=10314
+        left.insert(new SNode(9));
+        left.insert(new SNode(9));
+        left.insert(new SNode(6));
+        left.insert(new SNode(9));
+        
+        right.insert(new SNode(3));
+        right.insert(new SNode(4));
+        right.insert(new SNode(5));
+        
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(0));
+        expected.insert(new SNode(3));
+        expected.insert(new SNode(1));
+        expected.insert(new SNode(4));
+        
+        SlinkedList actual = Cci.add(left,right);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) { 
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
+    }
+    
+    public final void testAddV2() {
+        SlinkedList left = new SlinkedList();
+        SlinkedList right = new SlinkedList();
+        SlinkedList expected = new SlinkedList();
+        
+        //left = 9969
+        //right 345
+        //expected=10314
+        left.append(new SNode(9));
+        left.append(new SNode(9));
+        left.append(new SNode(6));
+        left.append(new SNode(9));
+        
+        right.append(new SNode(3));
+        right.append(new SNode(4));
+        right.append(new SNode(5));
+        
+        expected.append(new SNode(1));
+        expected.append(new SNode(0));
+        expected.append(new SNode(3));
+        expected.append(new SNode(1));
+        expected.append(new SNode(4));
+        
+        SlinkedList actual = Cci.addV2(left,right);
+        
+        SNode ecurnode = expected.head;
+        SNode acurnode = actual.head;
+        
+        while(ecurnode!=null) { 
+            //System.out.println("Expected: " + ecurnode.data + " Actual: " + acurnode.data);
+            assertEquals(ecurnode,acurnode);
+            ecurnode=ecurnode.next;
+            acurnode=acurnode.next;
+        }
+    }
+    
+    public final void testGetRepeat() {
+        
+        SlinkedList circ = new SlinkedList();
+        
+        SNode n1 = new SNode(1);
+        SNode n2 = new SNode(2);
+        SNode n3 = new SNode(3);
+        SNode n4 = new SNode(4);
+        SNode n5 = new SNode(5);
+        
+        circ.append(n1);
+        circ.append(n2);
+        circ.append(n3);
+        circ.append(n4);
+        circ.append(n5);
+        n5.next = n3;
+        
+        assertEquals(n3,Cci.getRepeated(circ));
+        
+        SlinkedList empty = new SlinkedList();
+        
+        assertNull(Cci.getRepeated(empty));
+        
+        SlinkedList ok = new SlinkedList();
+        
+        for(int i=1;i<5;i++) {
+            ok.append(new SNode(i));
+        }
+        
+        assertNull(Cci.getRepeated(ok));
+    }
+    
+    public final void testIsPalindrome() {
+        
+        //empty list
+        SlinkedList ll0 = new SlinkedList();
+        
+        assertFalse(Cci.isPalindrome(ll0));
+        
+        //1 element list
+        SlinkedList ll1 = new SlinkedList();
+        ll1.insert(new SNode(2));
+        
+        assertTrue(Cci.isPalindrome(ll1));
+        
+        //make an odd palindrome 1234321
+        SlinkedList ll2 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll2.append(new SNode(i));            
+        }
+        for(int i=3;i>=1;i--){
+            ll2.append(new SNode(i));
+        }
+        
+        assertTrue(Cci.isPalindrome(ll2));
+        
+        //make an odd non-palindrome
+        SlinkedList ll3 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll3.append(new SNode(i));            
+        }
+        for(int i=3;i>=2;i--){
+            ll3.append(new SNode(i));
+        }
+        ll3.append(new SNode(4));
+        
+        assertFalse(Cci.isPalindrome(ll3));
+        
+        //make an even palindrome
+        SlinkedList ll4 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll4.append(new SNode(i));            
+        }
+        for(int i=4;i>=1;i--){
+            ll4.append(new SNode(i));
+        }
+        
+        assertTrue(Cci.isPalindrome(ll4));
+        
+        //make an even non-palindrome
+        SlinkedList ll5 = new SlinkedList();
+        for(int i=1;i<=4;i++) {
+            ll5.append(new SNode(i));            
+        }
+        for(int i=4;i>=2;i--){
+            ll5.append(new SNode(i));
+        }
+        ll5.append(new SNode(4));
+        
+        assertFalse(Cci.isPalindrome(ll5));        
+    }
 }
