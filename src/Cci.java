@@ -229,11 +229,11 @@ class Cci {
 	    return false;
 	} 
 	
-	static public void llRemoveDupes(SlinkedList ll) {
+	static public void llRemoveDupes(SlinkedList<Integer> ll) {
 	    
 	    Set<Integer> nodes = new HashSet<Integer>();
 	    
-	    SNode curnode = ll.head;
+	    SNode<Integer> curnode = ll.head;
 	    
 	    if(ll.head==null) return;//empty list
 	    
@@ -250,7 +250,7 @@ class Cci {
 	    }
 	}
 	
-	static public SNode kthtolast(SlinkedList ll, int k) {
+	static public SNode<Integer> kthtolast(SlinkedList<Integer> ll, int k) {
 	    //simplest approach to me seems to be run along ll, count up the elements
 	    //(so we have size n) then run along counting until we reach kth to last
 	    //e.g.:
@@ -262,7 +262,7 @@ class Cci {
 	    //test that n-k+1 is not <= 0!
 	       int size=0;
 	       
-	       SNode curnode = ll.head;
+	       SNode<Integer> curnode = ll.head;
 	       
 	       if(curnode==null) {
 	           return null;
@@ -288,19 +288,19 @@ class Cci {
 	   }
 	
 	//first solution - generate a new linked list (question does not say in place) 
-	static public SlinkedList partition(SlinkedList ll, int val) {
-	    SlinkedList retlist = new SlinkedList();
+	static public SlinkedList<Integer> partition(SlinkedList<Integer> ll, int val) {
+	    SlinkedList<Integer> retlist = new SlinkedList<Integer>();
 	    
-	    SNode curnode = ll.head;
+	    SNode<Integer> curnode = ll.head;
 	    if(curnode==null) return null;
 	    
 	    while(curnode!=null) {
 	        //insert/append *copies* as 'next' pointer gets updated once put into new list 
 	        if(curnode.data < val) {
-	            retlist.insert(new SNode(curnode.data));
+	            retlist.insert(new SNode<Integer>(curnode.data));
 	        }
 	        else {
-	            retlist.append(new SNode(curnode.data));
+	            retlist.append(new SNode<Integer>(curnode.data));
 	        }
 	        curnode = curnode.next;
 	    }
@@ -308,7 +308,7 @@ class Cci {
 	    return retlist;
 	 }
 	
-	static public SlinkedList add(SlinkedList left, SlinkedList right) {
+	static public SlinkedList<Integer> add(SlinkedList<Integer> left, SlinkedList<Integer> right) {
 	    
 	    int ileft, iright;
 	    
@@ -329,7 +329,7 @@ class Cci {
 	    //build left number
 	    ileft = left.head.data;
 	    
-	    SNode curnode = left.head.next;
+	    SNode<Integer> curnode = left.head.next;
 	    
 	    while(curnode!=null) {
 	        ileft += mult * curnode.data;
@@ -353,11 +353,11 @@ class Cci {
 	    //System.out.println("Adding: " + ileft + " + " + iright + " = " + iresult);
 	    
 	    //no build up linkedlist
-	    SlinkedList retval = new SlinkedList();
+	    SlinkedList<Integer> retval = new SlinkedList<Integer>();
 	       
 	    while((iresult/10) != 0 || (iresult%10) !=0) {
 	        
-	        retval.append(new SNode(iresult%10));
+	        retval.append(new SNode<Integer>(iresult%10));
 	        iresult=iresult/10;
 	        //System.out.println("iresult now: " + iresult + " so iresult/10 = " + iresult/10 + " and iresult%10 = " + iresult%10);
 	    }
@@ -365,7 +365,7 @@ class Cci {
 	    return retval;
 	}		
 	
-	static public SlinkedList addV2(SlinkedList left, SlinkedList right) {
+	static public SlinkedList<Integer> addV2(SlinkedList<Integer> left, SlinkedList<Integer> right) {
 	     
 	     //if both are null, return null, else if one is null just return the other
 	    if(left.head==null) {
@@ -382,7 +382,7 @@ class Cci {
 	    //123 stored as 1-2-3
 	    int ileft = left.head.data;
 	    
-	    SNode curnode = left.head.next;
+	    SNode<Integer> curnode = left.head.next;
 	    while(curnode!=null) {
 	        //System.out.println("ileft is now: " + ileft + "(should be " + 9969 + ")");
 	        ileft*=10;
@@ -404,23 +404,23 @@ class Cci {
 	    int iresult=ileft+iright;
 	    
 	    //no build up linkedlist
-	    SlinkedList retval = new SlinkedList();
+	    SlinkedList<Integer> retval = new SlinkedList<Integer>();
 	        
 	    while(iresult/10 != 0 || iresult%10 !=0) {
 	        
-	        retval.insert(new SNode(iresult%10));
+	        retval.insert(new SNode<Integer>(iresult%10));
 	        iresult=iresult/10;
 	    }
 	    
 	    return retval;
 	}
 	
-	static public SNode getRepeated(SlinkedList ll) {
-	    Set<SNode> seen = new HashSet<SNode>();
+	static public SNode<Integer> getRepeated(SlinkedList<Integer> ll) {
+	    Set<SNode<Integer>> seen = new HashSet<SNode<Integer>>();
 	    
 	    if(ll.head==null) return null;
 	    
-	    SNode curnode = ll.head;
+	    SNode<Integer> curnode = ll.head;
 	    
 	    while(curnode!=null) {
 	        //return curnode if it's already in the ll (same node as previous)
@@ -437,7 +437,7 @@ class Cci {
 	    return null;
 	}
 	
-	public static boolean isPalindrome(SlinkedList ll) {
+	public static boolean isPalindrome(SlinkedList<Integer> ll) {
 
 	    if(ll.head==null) return false;
 	    
@@ -449,8 +449,8 @@ class Cci {
 	    
 	    Stack<Integer> stack = new Stack<Integer>();
 	    
-	    SNode slow = ll.head;
-	    SNode fast = ll.head.next.next;
+	    SNode<Integer> slow = ll.head;
+	    SNode<Integer> fast = ll.head.next.next;
 	    
 	    stack.push(slow.data);
 	    
