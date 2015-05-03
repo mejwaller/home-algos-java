@@ -9,6 +9,8 @@
 //6. next
 //7. prev
 
+package home.algosjava;
+
 class SlinkedList<T extends Comparable<T>> {
     
     SNode<T> head;

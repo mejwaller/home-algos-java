@@ -1,3 +1,5 @@
+package home.algosjava;
+
 class gcds
 {
 	

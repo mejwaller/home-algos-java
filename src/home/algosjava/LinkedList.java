@@ -1,3 +1,5 @@
+package home.algosjava;
+
 public class LinkedList {
     private Node first,last;
     

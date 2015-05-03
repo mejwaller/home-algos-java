@@ -1,3 +1,6 @@
+package home.algosjava;
+
+
 class mainpkg
 {
 	public static void main(String[] args) 
@@ -31,8 +34,8 @@ class mainpkg
 		
 		//System.out.println(googleplay.toDecimal(1111,2));
 		
-		int[] frac1={4,9};
-		int[] frac2={1,6};
+		//int[] frac1={4,9};
+		//int[] frac2={1,6};
 		
 		//int[] res = googleplay.multFrac(frac1,frac2);
 		
@@ -51,11 +54,11 @@ class mainpkg
 		//System.out.println("Simplified, that's " + res[0] + "/" + res[1]);
 		
 		//int number = 31;
-		int base = 16;
+		//int base = 16;
 		
 		//System.out.println(number + " in base" + base + " is " + googleplay.fromDecimal(number, base));
 		
-		String strnum = "FFF";
+		//String strnum = "FFF";
 		
 		//System.out.println(strnum + " in decimal is " + googleplay.baseToDecimal(strnum,base));
 		
@@ -100,11 +103,11 @@ class mainpkg
 		}
 		*/
 		
-		int[] val1 = {4,2};
-		int[] val2 = {9,9,9};
+		//int[] val1 = {4,2};
+		//int[] val2 = {9,9,9};
 		
-		int[] val11 = googleplay.arrIncrementer(val1);
-		int[] val21 = googleplay.arrIncrementer(val2);
+		//int[] val11 = googleplay.arrIncrementer(val1);
+		//int[] val21 = googleplay.arrIncrementer(val2);
 		
 		/*for(int i = 0; i< val11.length;i++)
 		{

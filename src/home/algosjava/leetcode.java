@@ -1,3 +1,5 @@
+package home.algosjava;
+
 class leetcode {
     
     static public int hammingWeight(int n) {

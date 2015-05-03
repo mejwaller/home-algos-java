@@ -1,3 +1,4 @@
+package home.algosjava;
 //stack implementation using an ArrayList
 import java.util.ArrayList;
 import java.lang.IndexOutOfBoundsException;

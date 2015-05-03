@@ -1,4 +1,5 @@
 //code answers (Java) to 'Cracking the Code Interview'
+package home.algosjava;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +8,7 @@ import java.util.HashMap;
 import java.util.Stack;
 import java.lang.Character;
 
-class Cci {
+public class Cci {
 	
 	static public boolean hasUniqueChars(String str) {
 		Set<Character> chars = new HashSet<Character>();

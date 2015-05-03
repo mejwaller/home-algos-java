@@ -1,3 +1,5 @@
+package home.algosjava;
+
 import junit.framework.TestCase;
 
 public class testCci extends TestCase {

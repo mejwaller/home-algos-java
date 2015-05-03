@@ -1,3 +1,5 @@
+package home.algosjava;
+
 import java.util.Random;
 
 /**
@@ -218,7 +220,7 @@ class SortersApp {
     	//System.out.println("mid = " + "(" + right + " - " + left + " + 1)" + "/2" + " = " + mid);
     	//System.out.println("mid's val is " + ar[mid]);
     	
-        int me = selectKth(ar,mid+1,left,right);
+        //int me = selectKth(ar,mid+1,left,right);
         
         //System.out.println("me = " + me);
         

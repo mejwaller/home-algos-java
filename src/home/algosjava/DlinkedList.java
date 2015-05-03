@@ -8,6 +8,7 @@
 //5. min
 //6. next
 //7. prev
+package home.algosjava;
 
 class DlinkedList {
     
