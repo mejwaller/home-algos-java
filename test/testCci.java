@@ -229,14 +229,14 @@ public class testCci extends TestCase {
     public final void testllDupRemove() {
         SlinkedList<Integer> ll = new SlinkedList<Integer>();
         
-        SNode<Integer> one = new SNode<Integer>(1);
-        SNode<Integer> two = new SNode<Integer>(2);
-        SNode<Integer> twoo = new SNode<Integer>(2);
-        SNode<Integer> three = new SNode<Integer>(3);
-        SNode<Integer> four = new SNode<Integer>(4);
-        SNode<Integer> foour = new SNode<Integer>(4);
-        SNode<Integer> fooour = new SNode<Integer>(4);
-        SNode<Integer> twooo = new SNode<Integer>(2);
+        SNode<Integer> one = new SNode<>(1);
+        SNode<Integer> two = new SNode<>(2);
+        SNode<Integer> twoo = new SNode<>(2);
+        SNode<Integer> three = new SNode<>(3);
+        SNode<Integer> four = new SNode<>(4);
+        SNode<Integer> foour = new SNode<>(4);
+        SNode<Integer> fooour = new SNode<>(4);
+        SNode<Integer> twooo = new SNode<>(2);
         
         ll.insert(twooo);
         ll.insert(fooour);
@@ -251,20 +251,20 @@ public class testCci extends TestCase {
         
         SNode<Integer> curnode = ll.head;
         
-        //System.out.println("Node one data:" + curnode.data);
+        System.out.println("Node one data:" + curnode.data);
         assertEquals(curnode,one);
-        //System.out.println("Node two data:" + curnode.next.data);
+        System.out.println("Node two data:" + curnode.next.data);
         assertEquals(curnode.next,three);//NOT two as first 2 twos will get deleted (1st found are deleted)
-       //System.out.println("Node three data:" + curnode.next.next.data);
-        assertEquals(curnode.next.next,four);
-        //System.out.println("Node four data:" + curnode.next.next.next.data);
-        assertEquals(curnode.next.next.next,two);
+        System.out.println("Node three data:" + curnode.next.next.data);
+        assertEquals(curnode.next.next,fooour);
+        System.out.println("Node four data:" + curnode.next.next.next.data);
+        assertEquals(curnode.next.next.next,twooo);
         assertEquals(curnode.next.next.next.next,null);
         
     }
     
     public final void testkthtolast() {
-        SlinkedList<Integer> ll = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll = new SlinkedList<>();
         
         
         //7 nodes
@@ -275,7 +275,7 @@ public class testCci extends TestCase {
         SNode<Integer> actual = Cci.kthtolast(ll,3);
         
         //1-2-3-4-5-6-7 - 3rd to last is 5
-        SNode<Integer> expected = new SNode<Integer>(5);
+        SNode<Integer> expected = new SNode<>(5);
         
         assertEquals(expected,actual);
         
@@ -290,9 +290,9 @@ public class testCci extends TestCase {
     
     public final void testPartition() {
         
-        SlinkedList<Integer> llin = new SlinkedList<Integer>();
+        SlinkedList<Integer> llin = new SlinkedList<>();
         
-        SlinkedList<Integer> expected = new SlinkedList<Integer>();
+        SlinkedList<Integer> expected = new SlinkedList<>();
         
         //set up a llist as:
         //8-7-4-1-2-3-5
@@ -328,9 +328,9 @@ public class testCci extends TestCase {
     }
     
     public final void testAdd() {
-        SlinkedList<Integer> left = new SlinkedList<Integer>();
-        SlinkedList<Integer> right = new SlinkedList<Integer>();
-        SlinkedList<Integer> expected = new SlinkedList<Integer>();
+        SlinkedList<Integer> left = new SlinkedList<>();
+        SlinkedList<Integer> right = new SlinkedList<>();
+        SlinkedList<Integer> expected = new SlinkedList<>();
         
         //left = 9969
         //right 345
@@ -364,9 +364,9 @@ public class testCci extends TestCase {
     }
     
     public final void testAddV2() {
-        SlinkedList<Integer> left = new SlinkedList<Integer>();
-        SlinkedList<Integer> right = new SlinkedList<Integer>();
-        SlinkedList<Integer> expected = new SlinkedList<Integer>();
+        SlinkedList<Integer> left = new SlinkedList<>();
+        SlinkedList<Integer> right = new SlinkedList<>();
+        SlinkedList<Integer> expected = new SlinkedList<>();
         
         //left = 9969
         //right 345
@@ -401,13 +401,13 @@ public class testCci extends TestCase {
     
     public final void testGetRepeat() {
         
-        SlinkedList<Integer> circ = new SlinkedList<Integer>();
+        SlinkedList<Integer> circ = new SlinkedList<>();
         
-        SNode<Integer> n1 = new SNode<Integer>(1);
-        SNode<Integer> n2 = new SNode<Integer>(2);
-        SNode<Integer> n3 = new SNode<Integer>(3);
-        SNode<Integer> n4 = new SNode<Integer>(4);
-        SNode<Integer> n5 = new SNode<Integer>(5);
+        SNode<Integer> n1 = new SNode<>(1);
+        SNode<Integer> n2 = new SNode<>(2);
+        SNode<Integer> n3 = new SNode<>(3);
+        SNode<Integer> n4 = new SNode<>(4);
+        SNode<Integer> n5 = new SNode<>(5);
         
         circ.append(n1);
         circ.append(n2);
@@ -418,11 +418,11 @@ public class testCci extends TestCase {
         
         assertEquals(n3,Cci.getRepeated(circ));
         
-        SlinkedList<Integer> empty = new SlinkedList<Integer>();
+        SlinkedList<Integer> empty = new SlinkedList<>();
         
         assertNull(Cci.getRepeated(empty));
         
-        SlinkedList<Integer> ok = new SlinkedList<Integer>();
+        SlinkedList<Integer> ok = new SlinkedList<>();
         
         for(int i=1;i<5;i++) {
             ok.append(new SNode<Integer>(i));
@@ -434,18 +434,18 @@ public class testCci extends TestCase {
     public final void testIsPalindrome() {
         
         //empty list
-        SlinkedList<Integer> ll0 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll0 = new SlinkedList<>();
         
         assertFalse(Cci.isPalindrome(ll0));
         
         //1 element list
-        SlinkedList<Integer> ll1 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll1 = new SlinkedList<>();
         ll1.insert(new SNode<Integer>(2));
         
         assertTrue(Cci.isPalindrome(ll1));
         
         //make an odd palindrome 1234321
-        SlinkedList<Integer> ll2 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll2 = new SlinkedList<>();
         for(int i=1;i<=4;i++) {
             ll2.append(new SNode<Integer>(i));            
         }
@@ -456,7 +456,7 @@ public class testCci extends TestCase {
         assertTrue(Cci.isPalindrome(ll2));
         
         //make an odd non-palindrome
-        SlinkedList<Integer> ll3 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll3 = new SlinkedList<>();
         for(int i=1;i<=4;i++) {
             ll3.append(new SNode<Integer>(i));            
         }
@@ -468,7 +468,7 @@ public class testCci extends TestCase {
         assertFalse(Cci.isPalindrome(ll3));
         
         //make an even palindrome
-        SlinkedList<Integer> ll4 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll4 = new SlinkedList<>();
         for(int i=1;i<=4;i++) {
             ll4.append(new SNode<Integer>(i));            
         }
@@ -479,7 +479,7 @@ public class testCci extends TestCase {
         assertTrue(Cci.isPalindrome(ll4));
         
         //make an even non-palindrome
-        SlinkedList<Integer> ll5 = new SlinkedList<Integer>();
+        SlinkedList<Integer> ll5 = new SlinkedList<>();
         for(int i=1;i<=4;i++) {
             ll5.append(new SNode<Integer>(i));            
         }
