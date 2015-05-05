@@ -94,7 +94,7 @@ class SortersApp {
     	}
     }
     
-    public static void selectionSort(int[] A) {
+    /*public static void selectionSort(int[] A) {
     	
     	int smallest = A[0];
     	
@@ -109,7 +109,7 @@ class SortersApp {
     		
     		
     	}
-    }
+    }*/
     
     public static int partition(int[] A, int left, int right, int pivotIndex)
     {	   	
