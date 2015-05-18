@@ -8,7 +8,7 @@ import java.lang.IndexOutOfBoundsException;
 public class ArrayListStack<T> {
 	
 	private ArrayList<T> array;
-	public int top;
+	private int top;
 
 	public ArrayListStack() { 
 		top=-1;

@@ -39,4 +39,13 @@ public class ArrayListStackTest {
 		assertTrue(stringStack.isEmpty());
 	}
 	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testUnderFlow() {
+		
+		ArrayListStack<Character> charStack = new ArrayListStack<>();
+		
+		charStack.pop();		
+		
+	}
+	
 }
