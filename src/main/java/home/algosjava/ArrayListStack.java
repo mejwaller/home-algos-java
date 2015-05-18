@@ -1,26 +1,28 @@
 package home.algosjava;
 //stack implementation using an ArrayList
+//(so should auto-resize *up* as elements are added
+//but won't auto-resize down as elements are removed
 import java.util.ArrayList;
 import java.lang.IndexOutOfBoundsException;
 
-public class ArrayStack<T> {
+public class ArrayListStack<T> {
 	
 	private ArrayList<T> array;
 	public int top;
 
-	public ArrayStack() { 
-		top=0;
+	public ArrayListStack() { 
+		top=-1;
 		array = new ArrayList<T>();
 	}
 
 	public boolean isEmpty() {
-		if(top==0) return true;
+		if(top<0) return true;
 		else return false;
 	}
 	
-	public void push(T elem) {
+	public boolean push(T elem) {
 		top++;
-		array.add(top,elem);
+		return array.add(elem);
 	}
 	
 	public T pop() throws IndexOutOfBoundsException {
