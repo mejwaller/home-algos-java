@@ -46,4 +46,21 @@ public class LlStackTest {
 		strStack.pop();
 		
 	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void testPushandPoptillEmpty() {
+	
+		LlStack<String> strStack = new LlStack<>();
+		
+		strStack.push("a1");
+		strStack.push("a2");
+		strStack.push("a3");
+		
+		strStack.pop();
+		strStack.pop();
+		strStack.pop();
+		
+		strStack.pop();
+		
+	}
 }
