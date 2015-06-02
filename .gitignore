@@ -1,7 +1,7 @@
 # Compiled source #
 *.class
-bin
-target
+bin/*
+target/*
 
 
 # eclipse files #
