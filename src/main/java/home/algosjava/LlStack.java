@@ -20,7 +20,7 @@ public class LlStack<T extends Comparable<T>> {
 		
 	}
 	
-	public T pop() throws ArrayIndexOutOfBoundsException {
+	public T pop() {
 		if(top==null) {
 			throw new ArrayIndexOutOfBoundsException("Stack underflow");
 		}

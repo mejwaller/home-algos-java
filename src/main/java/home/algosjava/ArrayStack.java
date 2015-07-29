@@ -25,14 +25,14 @@ public class ArrayStack<E> {
 		return false;
 	}
 	
-	public void push(E e) throws IndexOutOfBoundsException {
+	public void push(E e) {
 		if(top == elems.length-1) {
 			throw new IndexOutOfBoundsException("Stack overflow");			
 		}
 		elems[++top] = e;
 	}
 	
-	public E pop() throws IndexOutOfBoundsException {
+	public E pop() {
 		if(isEmpty()) {
 			throw new IndexOutOfBoundsException("Stack underflow");
 		}

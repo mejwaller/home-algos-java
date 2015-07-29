@@ -25,7 +25,7 @@ public class ArrayListStack<T> {
 		return array.add(elem);
 	}
 	
-	public T pop() throws IndexOutOfBoundsException {
+	public T pop() {
 		
 		if(isEmpty()) {
 			throw new IndexOutOfBoundsException("Underflow - stack is empty");

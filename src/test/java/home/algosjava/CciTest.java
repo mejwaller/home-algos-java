@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class CciTest {
     
     @Test
-    public void testhasUniqueChars() {
+    public final void testhasUniqueChars() {
     	String one = "abcdefghi";
     	String two = "abcdefgf";
     	
@@ -18,6 +18,7 @@ public class CciTest {
     	
     }
     
+    @Test
     public final void testisPermutation() {
     	String a = "aabcdefg";
     	String b = "abc";
@@ -32,6 +33,7 @@ public class CciTest {
     	
     }
     
+    @Test
     public final void testspaceReplace() {
     	String in = "Mr John Smith    ";
     	int len = 13;
@@ -50,6 +52,7 @@ public class CciTest {
     	
     }
     
+    @Test
     public final void testcompressString() {
     	String in = new String("aabcccccaaa");
     	String expected = new String("a2b1c5a3");
@@ -67,6 +70,7 @@ public class CciTest {
     	
     }
     
+    @Test
     public final void testrotMatrix() {
     	int[][] test1 = new int[3][3];
     	int[][] exp1 = new int[3][3];
@@ -174,6 +178,7 @@ public class CciTest {
         }    	
     }    
     
+    @Test
     public final void testzerorcs() {
         int[][] test1 = new int[4][4];
         int[][] exp1 = new int[4][4];
@@ -211,6 +216,7 @@ public class CciTest {
         
     }
     
+    @Test
     public final void testisSubstring() {
         String s1 = "waterbottle";
         String s2 = "bottle";
@@ -221,6 +227,7 @@ public class CciTest {
         assertTrue(Cci.isSubstring(s1,s1));
     }
     
+    @Test
     public final void testisRotation() {
         String s1 = "waterbottle";
         String s2 = "erbottlewat";
@@ -231,6 +238,7 @@ public class CciTest {
         assertFalse(Cci.isRotation(s1,s3));
     }
     
+    @Test
     public final void testllDupRemove() {
         SlinkedList<Integer> ll = new SlinkedList<Integer>();
         
@@ -268,6 +276,7 @@ public class CciTest {
         
     }
     
+    @Test
     public final void testkthtolast() {
         SlinkedList<Integer> ll = new SlinkedList<>();
         
@@ -293,6 +302,7 @@ public class CciTest {
         assertEquals(expected,actual);
     }
     
+    @Test
     public final void testPartition() {
         
         SlinkedList<Integer> llin = new SlinkedList<>();
@@ -332,6 +342,7 @@ public class CciTest {
         }
     }
     
+    @Test
     public final void testAdd() {
         SlinkedList<Integer> left = new SlinkedList<>();
         SlinkedList<Integer> right = new SlinkedList<>();
@@ -367,7 +378,8 @@ public class CciTest {
             acurnode=acurnode.next;
         }
     }
-    
+   
+    @Test
     public final void testAddV2() {
         SlinkedList<Integer> left = new SlinkedList<>();
         SlinkedList<Integer> right = new SlinkedList<>();
@@ -404,6 +416,7 @@ public class CciTest {
         }
     }
     
+    @Test
     public final void testGetRepeat() {
         
         SlinkedList<Integer> circ = new SlinkedList<>();
@@ -436,6 +449,7 @@ public class CciTest {
         assertNull(Cci.getRepeated(ok));
     }
     
+    @Test
     public final void testIsPalindrome() {
         
         //empty list

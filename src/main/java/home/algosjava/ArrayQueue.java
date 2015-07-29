@@ -27,7 +27,7 @@ public class ArrayQueue<E> {
 		return false;
 	}
 	
-	public E dequeue() throws IndexOutOfBoundsException {
+	public E dequeue() {
 		
 		if(isEmpty()) {
 			throw new IndexOutOfBoundsException("Empty queue");
@@ -44,7 +44,7 @@ public class ArrayQueue<E> {
 		
 	}
 	
-	public void enqueue(E e) throws IndexOutOfBoundsException {
+	public void enqueue(E e) {
 		
 		if((head==0 && tail==qarray.length-1) || (head == tail+1)) {
 			throw new IndexOutOfBoundsException("Queue full.");

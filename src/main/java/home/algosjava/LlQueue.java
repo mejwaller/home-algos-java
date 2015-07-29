@@ -26,7 +26,7 @@ public class LlQueue<T extends Comparable<T>> {
 		}		
 	}
 	
-	public T dequeue() throws IndexOutOfBoundsException {
+	public T dequeue() {
 		
 		if(isEmpty()) throw new IndexOutOfBoundsException("Empty queue.");
 		
